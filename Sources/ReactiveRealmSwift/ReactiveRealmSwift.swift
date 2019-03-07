@@ -1,3 +1,6 @@
 struct ReactiveRealmSwift {
-    var text = "Hello, World!"
+    
+    func text() -> String {
+        return "ReactiveRealmSwift"
+    }
 }

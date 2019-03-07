@@ -12,6 +12,6 @@ import XCTest
 class ReactiveRealmSwiftTests: XCTestCase {
 
     func testHoge() {
-        XCTAssertEqual(ReactiveRealmSwift().text, "Hello, World!")
+        XCTAssertEqual(ReactiveRealmSwift().text(), "ReactiveRealmSwift")
     }
 }
