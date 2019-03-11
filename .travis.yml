@@ -5,7 +5,7 @@ matrix:
 before_install:
     - carthage version
     - rm -rf Carthage/Checkouts/realm-cocoa/examples # To avoid carthage building realm examples.
-    - carthage build --no-use-binaries --cache-builds
+    - carthage build --no-use-binaries
 script:
     - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
     - xcodebuild test -scheme ReactiveRealmSwift-iOS -sdk iphonesimulator -destination "name=iPhone XS" | xcpretty -c
