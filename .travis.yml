@@ -3,8 +3,8 @@ matrix:
     include:
         - osx_image: xcode10.1
 before_install:
-    - brew update
     - carthage version
+    - rm -rf Carthage/Checkouts/realm-cocoa/examples # To avoid carthage building realm examples.
     - carthage build --no-use-binaries --cache-builds
 script:
     - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
