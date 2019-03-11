@@ -6,7 +6,7 @@ before_install:
     - rm -rf Carthage
     - carthage version
 install:
-    - carthage bootstrap --no-use-binaries
+    - travis_wait 30 carthage bootstrap --no-use-binaries
 script:
     - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
     - xcodebuild test -scheme ReactiveRealmSwift-iOS -sdk iphonesimulator -destination "name=iPhone XS" | xcpretty -c
