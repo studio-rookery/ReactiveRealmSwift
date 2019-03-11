@@ -2,6 +2,10 @@ language: swift
 matrix:
     include:
         - osx_image: xcode10.1
+before_install:
+    - carthage version
+    - brew install carthage
+    - carthage build --no-use-binaries --cache-builds
 script:
     - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
     - xcodebuild test -scheme ReactiveRealmSwift-iOS -sdk iphonesimulator -destination "name=iPhone XS" | xcpretty -c
@@ -14,3 +18,6 @@ notifications:
 branches:
   only:
   - master
+cache:
+  directories:
+  - Carthage
