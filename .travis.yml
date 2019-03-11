@@ -3,9 +3,9 @@ matrix:
     include:
         - osx_image: xcode10.1
 before_install:
+    - rm -rf Carthage
     - carthage version
-    - rm -rf Carthage/Checkouts/realm-cocoa/examples # To avoid carthage building realm examples.
-    - carthage build --no-use-binaries
+    - carthage bootstrap --no-use-binaries
 script:
     - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
     - xcodebuild test -scheme ReactiveRealmSwift-iOS -sdk iphonesimulator -destination "name=iPhone XS" | xcpretty -c
@@ -20,4 +20,4 @@ branches:
   - master
 cache:
   directories:
-  - Carthage
+  - Carthage/Build
