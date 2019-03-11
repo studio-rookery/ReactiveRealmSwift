@@ -3,7 +3,7 @@ matrix:
     include:
         - osx_image: xcode10.1
 before_install:
-    - brew install carthage
+    - brew upgrade carthage
     - carthage version
     - carthage build --no-use-binaries --cache-builds
 script:
