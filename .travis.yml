@@ -3,8 +3,8 @@ matrix:
     include:
         - osx_image: xcode10.1
 before_install:
-    - carthage version
     - brew install carthage
+    - carthage version
     - carthage build --no-use-binaries --cache-builds
 script:
     - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
