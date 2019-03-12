@@ -1,0 +1,16 @@
+language: swift
+matrix:
+    include:
+        - osx_image: xcode10.1
+script:
+    - xcodebuild test -scheme ReactiveRealmSwift-macOS | xcpretty -c
+    - xcodebuild test -scheme ReactiveRealmSwift-iOS -sdk iphonesimulator -destination "name=iPhone XS" | xcpretty -c
+    - xcodebuild test -scheme ReactiveRealmSwift-tvOS -sdk appletvsimulator -destination "name=Apple TV" | xcpretty -c
+    - xcodebuild build -scheme ReactiveRealmSwift-watchOS -sdk watchsimulator | xcpretty
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
+notifications:
+    email: false
+branches:
+  only:
+  - master
