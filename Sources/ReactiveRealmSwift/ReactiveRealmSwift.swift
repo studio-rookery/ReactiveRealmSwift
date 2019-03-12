@@ -1,3 +1,11 @@
+import Realm
+import RealmSwift
+import Result
+import ReactiveSwift
+
 struct ReactiveRealmSwift {
-    var text = "Hello, World!"
+    
+    static func sayHello() -> String {
+        return "hello"
+    }
 }
