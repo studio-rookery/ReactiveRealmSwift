@@ -2,9 +2,6 @@ language: swift
 matrix:
     include:
         - osx_image: xcode10.1
-install:
-    - rm -rf Carthage
-    - carthage checkout
 script:
     - set -o pipefail
     - xcodebuild test -workspace ReactiveRealmSwift.xcworkspace -scheme ReactiveRealmSwift-macOS | xcpretty -c
