@@ -1,0 +1,17 @@
+language: swift
+matrix:
+    include:
+        - osx_image: xcode10.1
+script:
+    - set -o pipefail
+    - xcodebuild test -workspace ReactiveRealmSwift.xcworkspace -scheme ReactiveRealmSwift-macOS | xcpretty -c
+    - xcodebuild test -workspace ReactiveRealmSwift.xcworkspace -scheme ReactiveRealmSwift-iOS -sdk iphonesimulator -destination "name=iPhone XS" | xcpretty -c
+    - xcodebuild test -workspace ReactiveRealmSwift.xcworkspace -scheme ReactiveRealmSwift-tvOS -sdk appletvsimulator -destination "name=Apple TV" | xcpretty -c
+    - xcodebuild build -workspace ReactiveRealmSwift.xcworkspace -scheme ReactiveRealmSwift-watchOS -sdk watchsimulator | xcpretty
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
+notifications:
+    email: false
+branches:
+  only:
+  - master
